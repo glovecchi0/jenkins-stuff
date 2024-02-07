@@ -1,5 +1,5 @@
 controller:
-  jenkinsUrl: 34.154.166.132.sslip.io
+  jenkinsUrl: 
   serviceType: LoadBalancer
   httpsKeyStore:
     enable: true
