@@ -1,5 +1,5 @@
 # Files that may contain secrets
-jenkinsci/resources/custom-helm-values.yaml
+apps/resources/jenkinsci/custom-helm-values.yaml
 
 # Temporary files
 **/*.swp
