@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: neuvector-service-rest
+  namespace: cattle-neuvector-system
+spec:
+  ports:
+    - port: 10443
+      name: controller
+      protocol: TCP
+  type: LoadBalancer
+  selector:
+    app: neuvector-controller-pod

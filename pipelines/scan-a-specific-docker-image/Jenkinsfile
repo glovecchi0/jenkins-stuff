@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Scan the Docker image') {
+            steps {
+                neuvector registrySelection: 'dockerhub', repository: 'library/alpine', scanLayers: true, scanTimeout: 5, tag: '3.19.1'
+            }
+        }
+    }
+}
