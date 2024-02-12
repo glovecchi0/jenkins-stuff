@@ -2,7 +2,7 @@
 
 The folder contains:
 - resources/jenkinsci/custom-helm-values.yaml.tpl -> the file that contains the [Jenkins Helm Chart](https://github.com/jenkinsci/helm-charts/blob/main/charts/jenkins/values.yaml) custom setups.
-- resources/neuvector...
+- resources/neuvector/custom-helm-values.yaml.tpl -> the file that contains the [NeuVector Helm Chart](https://github.com/neuvector/neuvector-helm/blob/master/charts/core/values.yaml) custom setups.
 - Makefile -> the file contains a series of shortcuts for deploying NeuVector, NGINX, and Jenkins.
 
 ## Prerequisites
