@@ -18,7 +18,7 @@ controller:
           neuvector:
             controllerApiUrl: ""
             disableTLSCertVerification: true
-            password: "admin"
+            password: ""
             registries:
             - nickname: "dockerhub"
               regPassword: ""
