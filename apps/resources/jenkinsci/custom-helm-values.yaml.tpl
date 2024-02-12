@@ -16,7 +16,7 @@ controller:
       neuvector: |
         unclassified:
           neuvector:
-            controllerApiUrl: "https://34.154.127.109:10443"
+            controllerApiUrl: ""
             disableTLSCertVerification: true
             password: "admin"
             registries:
