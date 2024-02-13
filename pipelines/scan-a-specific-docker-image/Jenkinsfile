@@ -1,10 +1,33 @@
+def DOCKER_IMAGE_NAME
+def DOCKER_IMAGE_VERSION
+
 pipeline {
     agent any
 
     stages {
-        stage('Scan the Docker image') {
+        stage ('Get user input') {
             steps {
-                neuvector registrySelection: 'dockerhub', repository: 'library/alpine', scanLayers: true, scanTimeout: 5, tag: '3.19.1'
+                timeout(time: 5, unit: 'MINUTES') {
+                    script {
+                        DOCKER_IMAGE_NAME = input (
+                            message: 'Enter the name of the Docker image to scan (the reference repository is Docker Hub).',
+                            parameters: [string(defaultValue: 'alpine',
+                                description: '''The Docker image name should be in a name-only format.''',
+                                name: 'Docker Image name',
+                                trim: true)] )
+                        DOCKER_IMAGE_VERSION = input (
+                            message: 'Enter the version of the Docker image to scan (the reference repository is Docker Hub).',
+                            parameters: [string(defaultValue: '3.19.1',
+                                description: '''The Docker image version should be a number or label like "latest", "stable", etc.''',
+                                name: 'Docker Image version',
+                                trim: true)] )
+                    }
+                }
+            } 
+        }
+        stage ('Scan the Docker image') {
+            steps {
+                neuvector registrySelection: "dockerhub", repository: "library/${DOCKER_IMAGE_NAME}", scanLayers: true, scanTimeout: 5, tag: "${DOCKER_IMAGE_VERSION}"
             }
         }
     }
