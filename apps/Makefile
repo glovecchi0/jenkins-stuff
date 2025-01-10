@@ -39,7 +39,7 @@ install-jenkins:
 	sed -i '' "s@controllerApiUrl.*@controllerApiUrl: \"https:\/\/$$(kubectl -n cattle-neuvector-system get svc neuvector-service-rest --output jsonpath='{.status.loadBalancer.ingress[0].ip}').sslip.io:10443\"@g" ./resources/jenkinsci/custom-helm-values.yaml; echo ""
 	sed -i '' "s@password.*@password: $$(cat ./resources/neuvector/custom-helm-values.yaml | grep Password | awk -F: '{print $$2}' | sed 's/ //g')@g" ./resources/jenkinsci/custom-helm-values.yaml; echo ""
 	#Install the jenkins Chart
-	helm install jenkins jenkins/jenkins --values ./resources/jenkinsci/custom-helm-values.yaml -n jenkins || true; echo ""
+	helm install jenkins jenkins/jenkins --version 5.8.2 --values ./resources/jenkinsci/custom-helm-values.yaml -n jenkins || true; echo ""
 	while [[ "$$JENKINS_CONTAINER_STATUS" != "2/2" ]]; do echo "Jenkins Controller pod is not ready."; sleep 5; JENKINS_CONTAINER_STATUS="$$(kubectl -n jenkins get pods -l app.kubernetes.io/component=jenkins-controller --no-headers | awk '{print $$2}')"; done; echo ""
 	cat resources/jenkinsci/custom-helm-values.yaml | grep jenkinsUrl | sed 's/ //g'; echo ""
 	#Add demo pipelines

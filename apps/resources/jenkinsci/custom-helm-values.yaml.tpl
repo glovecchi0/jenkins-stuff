@@ -6,11 +6,11 @@ controller:
       kubernetes.io/ingress.class: nginx
       ingressClassName: nginx
   installPlugins:
-    - kubernetes:4203.v1dd44f5b_1cf9
-    - workflow-aggregator:596.v8c21c963d92d
-    - git:5.2.1
-    - configuration-as-code:1775.v810dc950b_514
-    - neuvector-vulnerability-scanner:2.3
+    - kubernetes:4306.vc91e951ea_eb_d
+    - workflow-aggregator:600.vb_57cdd26fdd7
+    - git:5.7.0
+    - configuration-as-code:1915.vcdd0a_d0d2625
+    - neuvector-vulnerability-scanner:2.4
   JCasC:
     configScripts:
       neuvector: |
